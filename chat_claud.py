@@ -21,13 +21,13 @@ if question and anthropic_api_key:
     #    prompt=prompt,
     #    stop_sequences=[anthropic.HUMAN_PROMPT],
     #    model="claude-3-opus-20240229", 
-    #    max_tokens_to_sample=1000,
+    #    max_tokens_to_sample=100,
     #)
     #st.write("### Answer")
     #st.write(response.completion)
     message = client.messages.create(
       model="claude-3-opus-20240229",
-      max_tokens=1000,
+      max_tokens=100,
       system="chat bot",
       messages=[
         {
@@ -35,7 +35,7 @@ if question and anthropic_api_key:
             "content": [
                 {
                     "type": "text",
-                    "text": "how to use claude in .net environment\n"
+                    "text": prompt
                 }
             ]
         }]
