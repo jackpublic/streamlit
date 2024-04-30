@@ -38,7 +38,7 @@ if question and anthropic_api_key:
                     "text": "how to use claude in .net environment\n"
                 }
             ]
-        }
+        }]
     )
     st.write(message.content)
     
