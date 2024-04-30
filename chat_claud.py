@@ -40,6 +40,6 @@ if question and anthropic_api_key:
             ]
         }]
     )
-    st.write(message.content)
+    st.write(message.content[0].txt)
     
     
