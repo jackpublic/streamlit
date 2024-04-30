@@ -16,15 +16,30 @@ if not anthropic_api_key:
 if question and anthropic_api_key:
     prompt = f"""{anthropic.HUMAN_PROMPT} {question}{anthropic.AI_PROMPT}"""
 
-    client = anthropic.Client(api_key=anthropic_api_key)
-    response = client.completions.create(
-        prompt=prompt,
-        stop_sequences=[anthropic.HUMAN_PROMPT],
-        model="claude-3-opus-20240229", 
-        max_tokens_to_sample=1000,
+    client = anthropic.Anthropic(api_key=anthropic_api_key)
+    #response = client.completions.create(
+    #    prompt=prompt,
+    #    stop_sequences=[anthropic.HUMAN_PROMPT],
+    #    model="claude-3-opus-20240229", 
+    #    max_tokens_to_sample=1000,
+    #)
+    #st.write("### Answer")
+    #st.write(response.completion)
+    message = client.messages.create(
+      model="claude-3-opus-20240229",
+      max_tokens=1000,
+      system="chat bot",
+      messages=[
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "how to use claude in .net environment\n"
+                }
+            ]
+        }
     )
-    st.write("### Answer")
-    st.write(response.completion)
-
-
+    st.write(message.content)
+    
     
